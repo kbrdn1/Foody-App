@@ -1,6 +1,6 @@
 import cors from 'cors'
 import express from 'express'
-import connectDb from './db'
+import connectDb from './db/connect'
 import { config } from 'dotenv'
 
 // Load environment variables
@@ -9,8 +9,9 @@ config()
 // Connect to database
 connectDb
 
+// Get port and app url
 const PORT = process.env.PORT || 3000,
-APP_URL = process.env.APP_URL;
+    APP_URL = process.env.APP_URL;
 
 // Initialize express
 const app = express()
@@ -22,10 +23,9 @@ app.use(cors({
     origin: APP_URL
 }))
 
-// Routes
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
+// Routes 
+const authRoutes = require('./routes/auth')
+app.use('auth', authRoutes)
 
 // Start server
 app.listen(PORT, () => {
