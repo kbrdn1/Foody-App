@@ -9,9 +9,9 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
     if (err) {
-        console.log(err)
+        throw new Error('Error while connecting to database')
     } else {
-        console.log("Connected to database: foody-app")
+        console.log("Connected to database >> foody-app: http://localhost/phpmyadmin/index.php?route=/&route=%2F&db=foody-app")
     }
 })
 
