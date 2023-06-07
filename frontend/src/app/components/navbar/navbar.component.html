@@ -1,0 +1,35 @@
+<nav class="navbar bg-primary m-3 rounded-3xl">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a routerLink="/home">Accueil</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="navbar-center text-white">
+    <a class="btn btn-ghost normal-case text-xl">
+      <div class="flex items-center gap-1">
+        <img class="w-8" src="/assets/logo.svg" alt="logo-foody-app">
+        <span>FoodyApp</span>
+      </div>
+    </a>
+  </div>
+  <div class="navbar-end">
+    <button class="btn btn-ghost text-white gap-4">
+      <div class="avatar">
+        <div class="w-10 mask mask-squircle">
+          <img src="http://localhost:3000/uploads/test/avatar_test.jpg" alt="profile-pic"/>
+        </div>
+      </div>
+      <div class="flex flex-col items-start">
+        <p class="font-bold">Firstname</p>
+        <p class="text-sm">Lastname</p>
+      </div>
+      <i class="fas fa-gear text-lg"></i>
+    </button>
+  </div>
+</nav>
