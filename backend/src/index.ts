@@ -1,9 +1,13 @@
 import cors from 'cors'
 import express from 'express'
+import connectDb from './db'
 import { config } from 'dotenv'
 
 // Load environment variables
 config()
+
+// Connect to database
+connectDb
 
 const PORT = process.env.PORT || 3000,
     APP_URL = process.env.APP_URL;
@@ -22,5 +26,5 @@ app.get('/', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`)
+    console.log(`Server started on port ${PORT} >> http://localhost:${PORT}`)
 })
