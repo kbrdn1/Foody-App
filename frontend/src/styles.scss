@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+nav, footer {
+    width: calc(100% - (.75rem * 2)) !important;
+}
