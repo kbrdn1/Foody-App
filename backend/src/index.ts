@@ -10,10 +10,13 @@ config()
 connectDb
 
 const PORT = process.env.PORT || 3000,
-    APP_URL = process.env.APP_URL;
+APP_URL = process.env.APP_URL;
 
 // Initialize express
 const app = express()
+
+// Uploads directory
+app.use('/uploads', express.static('uploads'))
 
 app.use(cors({
     origin: APP_URL
