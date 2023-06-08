@@ -1,0 +1,49 @@
+<section class="flex flex-col md:flex-row gap-5">
+  <div class="card bg-base-200 w-1/3 py-5 px-10 flex flex-col gap-2">
+    <div class="flex justify-center">
+      <img *ngIf="user?.avatar; else avatar" class="w-[4rem]" [src]="user?.avatar" alt="profile-pic" />
+      <ng-template #avatar>
+        <i class="fas fa-user-circle text-[4rem]"></i>
+      </ng-template>
+    </div>
+    <div class="text-center text-xl font-semibold flex flex-col gap-1 justify-center items-center">
+      <div>{{ user?.firstname }} <span class="uppercase">{{ user?.lastname}}</span></div>
+      <div *ngIf="user?.admin; else userRole" class="badge badge-primary">Admin</div>
+      <ng-template #userRole>
+        <div class="badge badge-secondary">Utilisateur</div>
+      </ng-template>
+    </div>
+    <div class="flex flex-col border-t-2 border-neutral-content mt-3 pt-5 gap-3">
+      <div class="flex flex-col gap-1">
+        <span class="text-sm font-semibold">E-mail</span>
+        <p class="bg-white px-3 py-1 rounded-md">{{user?.email}}</p>
+      </div>
+      <div class="card-actions mt-3">
+        <button class="btn btn-primary w-full">Mofifier</button>
+      </div>
+    </div>
+  </div>
+  <div class="w-full card bg-base-200 p-3">
+    <div class="stats shadow">
+
+      <div class="stat place-items-center">
+        <div class="stat-title">Aliments</div>
+        <div class="stat-value">12</div>
+        <div class="stat-desc">From January 1st to December 30th</div>
+      </div>
+
+      <div class="stat place-items-center">
+        <div class="stat-title">Calories</div>
+        <div class="stat-value text-secondary">4,200</div>
+        <div class="stat-desc text-secondary">↗︎ 40 (2%)</div>
+      </div>
+
+      <div class="stat place-items-center">
+        <div class="stat-title">Repas</div>
+        <div class="stat-value">1,200</div>
+        <div class="stat-desc">↘︎ 90 (14%)</div>
+      </div>
+
+    </div>
+  </div>
+</section>
