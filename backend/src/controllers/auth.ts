@@ -2,7 +2,7 @@ import { getUserByEmail, createUser } from '../db/request';
 import { comparePassword, hashPassword } from '../utils';
 import { Request, Response } from 'express';
 import { createToken } from '../middlewares/auth';
-import { User } from '../models/user';
+import { User, UserRes } from '../models/user';
 import { get } from 'http';
 
 // Login
@@ -20,13 +20,24 @@ export const login = async (req: Request, res: Response) => {
     
     const token = createToken(user);
 
-    return res.status(200).json({ message: 'User logged in successfully !', token });
+    //delete user.password
+    const userRes: UserRes = {
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        avatar: user.avatar,
+        email: user.email,
+        admin: user.admin
+    };
+
+    return res.status(200).json({ message: 'User logged in successfully !', token, user: userRes });
 }
 
 // Register
 export const register = async (req: Request, res: Response) => {
     const { firstname, lastname, email, password } = req.body,
         admin: boolean = false,
+        avatar: null = null,
         user: User = await getUserByEmail(email);
 
     if (user !== undefined)
@@ -34,7 +45,7 @@ export const register = async (req: Request, res: Response) => {
     
     const hashedPassword: string = await hashPassword(password);
 
-    createUser(firstname, lastname, email, hashedPassword, admin);
+    createUser(firstname, lastname, avatar, email, hashedPassword, admin);
 
     return res.status(200).json({ message: 'User created successfully !' });
 }
