@@ -16,6 +16,9 @@ const PORT = process.env.PORT || 3000,
 // Initialize express
 const app = express()
 
+// Body parser
+app.use(express.json())
+
 // Uploads directory
 app.use('/uploads', express.static('uploads'))
 
@@ -25,7 +28,7 @@ app.use(cors({
 
 // Routes 
 const authRoutes = require('./routes/auth')
-app.use('auth', authRoutes)
+app.use('', authRoutes)
 
 // Start server
 app.listen(PORT, () => {

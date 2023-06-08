@@ -38,7 +38,7 @@ export const verifyToken = (token: string) => {
 }
 
 // Sign in
-export const signIn = (req: Request, res: Response, next: NextFunction) => {
+export const isAuthentificate = (req: Request, res: Response, next: NextFunction) => {
     const token = req.header('auth-token');
     if (!token)
         return res.status(401).json({ error: 'Access denied' });
@@ -55,5 +55,5 @@ export const signIn = (req: Request, res: Response, next: NextFunction) => {
 export default {
     createToken,
     verifyToken,
-    signIn
+    isAuthentificate
 };

@@ -18,8 +18,8 @@ export const getUserByEmail = async (email: string): Promise<User> => {
 };
 
 // Create user
-export const createUser = (firstname: string, lastname: string, email: string, password: string) => {
-    connectDb.query("INSERT INTO user (firstname, lastname, email, password) VALUES (?, ?, ?, ?)", [firstname, lastname, email, password], (err, result) => {
+export const createUser = (firstname: string, lastname: string, email: string, password: string, admin: boolean) => {
+    connectDb.query("INSERT INTO user (firstname, lastname, email, password, admin) VALUES (?, ?, ?, ?, ?)", [firstname, lastname, email, password, admin], (err, result) => {
         if (err)
             throw new Error('Error while creating user');
         else
