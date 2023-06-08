@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { config } from 'dotenv';
-import { User } from '../models/user';
+import { User, UserRes } from '../models/user';
 import { Request, Response, NextFunction } from 'express';
-import { ParamsDictionary } from 'express-serve-static-core';
 
 // Extend Express Request interface to add user property
 declare global {
@@ -20,7 +19,7 @@ config();
 const secret: string | undefined = process.env.JWT_SECRET;
 
 // Create token
-export const createToken = (user: User) => {
+export const createToken = (user: UserRes) => {
     if (!secret)
         throw new Error('JWT secret is not defined');
 
@@ -35,6 +34,16 @@ export const verifyToken = (token: string) => {
         throw new Error('JWT secret is not defined');
     
     return jwt.verify(token, secret);
+}
+
+// Decode token
+export const decodeToken = (token: string) => {
+    if (!secret)
+        throw new Error('JWT secret is not defined');
+    
+    console.log(jwt.decode(token));
+    
+    return jwt.decode(token);
 }
 
 // Sign in
@@ -52,8 +61,31 @@ export const isAuthentificate = (req: Request, res: Response, next: NextFunction
     }
 }  
 
+// isAdmin
+export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token)
+        return res.status(401).json({ error: 'Access denied' });
+    
+    if (!verifyToken(token))
+        return res.status(401).json({ error: 'Access denied' });
+    
+    const decodedToken = decodeToken(token);
+    if (!decodedToken)
+        return res.status(401).json({ error: 'Access denied' });
+    
+    const user = JSON.parse(JSON.stringify(decodedToken)).user;
+    
+    if (!user.admin)
+        return res.status(401).json({ error: 'Access denied' });
+    
+    next();
+}
+
 export default {
     createToken,
     verifyToken,
+    decodeToken,
+    isAdmin,
     isAuthentificate
 };

@@ -1,7 +1,5 @@
-import bcrypt from 'bcrypt';
-import { User } from '../models/user';
-import { Query } from 'mysql';
-import connectDb from './connect'
+import { User } from '../../models/user';
+import connectDb from '../connect'
 
 // Get user by email
 export const getUserByEmail = async (email: string): Promise<User> => {
@@ -26,4 +24,3 @@ export const createUser = (firstname: string, lastname: string, avatar: string |
             return result;
     })
 }   
-
