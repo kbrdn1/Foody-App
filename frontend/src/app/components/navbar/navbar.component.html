@@ -12,24 +12,48 @@
   </div>
   <div class="navbar-center text-white">
     <a class="btn btn-ghost normal-case text-xl">
-      <div class="flex items-center gap-1">
+      <div class="flex items-center gap-1" routerLink="/home">
         <img class="w-8" src="/assets/logo.svg" alt="logo-foody-app">
         <span>FoodyApp</span>
       </div>
     </a>
   </div>
   <div class="navbar-end">
-    <button class="btn btn-ghost text-white gap-4">
-      <div class="avatar">
-        <div class="w-10 mask mask-squircle">
-          <img src="http://localhost:3000/uploads/test/avatar_test.jpg" alt="profile-pic"/>
-        </div>
-      </div>
-      <div class="flex flex-col items-start">
-        <p class="font-bold">Firstname</p>
-        <p class="text-sm">Lastname</p>
-      </div>
-      <i class="fas fa-gear text-lg"></i>
+    <button *ngIf="jwt == null; else logout" routerLink="/login" class="btn btn-warning rounded-3xl">
+      <i class="fas fa-sign-out-alt"></i>
+      Connexion
     </button>
+    <ng-template #logout>
+      <details class="text-white gap-4 dropdown">
+        <summary class="btn btn-ghost">
+          <div class="avatar">
+            <div class="w-10 mask mask-squircle">
+              <img *ngIf="user?.avatar; else avatar" [src]="user?.avatar" alt="profile-pic" />
+              <ng-template #avatar>
+                <i class="fas fa-user-circle text-[38px]"></i>
+              </ng-template>
+            </div>
+          </div>
+          <div class="flex flex-col items-start">
+            <p class="font-bold">{{ user?.firstname }}</p>
+            <p class="text-sm">{{ user?.lastname}}</p>
+          </div>
+          <i class="fas fa-gear text-lg"></i>
+        </summary>
+        <ul class="p-2 shadow menu dropdown-content bg-secondary rounded-box w-52 z-10">
+          <li class="hover:bg-secondary-focus text-secondary-content">
+            <a>
+              <i class="fas fa-user"></i>
+              Profil
+            </a>
+          </li>
+          <li class="hover:bg-red-500 hover:text-white text-red-500 rounded-md">
+            <a (click)="signOut()">
+              <i class="fas fa-arrow-right-from-bracket"></i>
+              Deconnexion</a>
+          </li>
+        </ul>
+      </details>
+    </ng-template>
   </div>
 </nav>
