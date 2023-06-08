@@ -17,4 +17,8 @@ export class ProfileComponent {
       return null;
     }
   }
+
+  editUser() {
+    console.log('edit user');
+  }
 }

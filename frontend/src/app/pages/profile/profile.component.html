@@ -19,11 +19,12 @@
         <p class="bg-white px-3 py-1 rounded-md">{{user?.email}}</p>
       </div>
       <div class="card-actions mt-3">
-        <button class="btn btn-primary w-full">Mofifier</button>
+        <button class="btn btn-primary w-full" (click)="editUser()">Mofifier</button>
       </div>
     </div>
   </div>
-  <div class="w-full card bg-base-200 p-3">
+  <div class="w-full card bg-base-200 px-3 py-6">
+    <h1 class="text-3xl mb-3 font-bold mx-auto">Recapitulatif du jour</h1>
     <div class="stats shadow">
 
       <div class="stat place-items-center">
