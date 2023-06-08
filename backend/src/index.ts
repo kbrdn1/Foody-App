@@ -21,6 +21,7 @@ app.use(express.json())
 
 // Uploads directory
 app.use('/uploads', express.static('uploads'))
+app.use('/foods', express.static('foods'))
 
 app.use(cors({
     origin: APP_URL
@@ -28,7 +29,10 @@ app.use(cors({
 
 // Routes 
 const authRoutes = require('./routes/auth')
+const foodRoutes = require('./routes/food')
+
 app.use('', authRoutes)
+app.use('', foodRoutes)
 
 // Start server
 app.listen(PORT, () => {
