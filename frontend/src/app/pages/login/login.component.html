@@ -10,26 +10,42 @@
       </p>
     </div>
     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <div class="card-body">
+      <form class="card-body" (ngSubmit)="signIn()" [formGroup]="loginForm">
         <div class="form-control">
           <label class="label">
             <span class="label-text">E-mail</span>
+            <span class="label-text text-error"
+              *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">requis</span>
           </label>
-          <input type="text" placeholder="e-mail" class="input input-bordered" />
+          <input type="text" placeholder="e-mail" class="input input-bordered" formControlName="email" />
+          <label class="label">
+            <span class="label-text-alt text-error"
+              *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">E-mail
+              incorrect</span>
+          </label>
         </div>
         <div class="form-control">
           <label class="label">
             <span class="label-text">Mot de passe</span>
+            <span class="label-text text-error"
+              *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">requis</span>
           </label>
-          <input type="text" placeholder="mot de passe" class="input input-bordered" />
+          <input type="password" placeholder="mot de passe" class="input input-bordered" formControlName="password" />
           <label class="label">
+            <span class="label-text-alt text-error"
+              *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched">Doit
+              contenir 3 caractères minimum.
+            </span>
             <a href="#" class="label-text-alt link link-hover">Mot de passe oublié?</a>
           </label>
         </div>
         <div class="form-control mt-6">
-          <button class="btn btn-primary">Connexion</button>
+          <button class="btn btn-primary" type="submit">Connexion</button>
+          <a routerLink="/register" class="text-neutral hover:text-primary link link-hover text-sm m-auto">
+            Je n'ai pas de compte, je m'inscris.
+          </a>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

@@ -10,35 +10,70 @@
       </p>
     </div>
     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <div class="card-body">
+      <form class="card-body" (ngSubmit)="signUp()" [formGroup]="registerForm">
         <div class="form-control">
           <label class="label">
             <span class="label-text">Prénom</span>
+            <span class="label-text text-error"
+              *ngIf="registerForm.get('firstname')?.hasError('required') && registerForm.get('firstname')?.touched">requis</span>
           </label>
-          <input type="text" placeholder="Prénom" class="input input-bordered" />
+          <input type="text" placeholder="Prénom" class="input input-bordered" formControlName="firstname" />
+          <label class="label">
+            <span class="label-text-alt text-error"
+              *ngIf="registerForm.get('firstname')?.hasError('minlength') && registerForm.get('firstname')?.touched">Doit
+              contenir 3 caractères minimum.
+            </span>
+          </label>
         </div>
         <div class="form-control">
           <label class="label">
             <span class="label-text">Nom</span>
+            <span class="label-text text-error"
+              *ngIf="registerForm.get('lastname')?.hasError('required') && registerForm.get('lastname')?.touched">requis</span>
           </label>
-          <input type="text" placeholder="nom" class="input input-bordered" />
+          <input type="text" placeholder="nom" class="input input-bordered" formControlName="lastname" />
+          <label class="label">
+            <span class="label-text-alt text-error"
+              *ngIf="registerForm.get('lastname')?.hasError('minlength') && registerForm.get('lastname')?.touched">Doit
+              contenir 3 caractères minimum.
+            </span>
+          </label>
         </div>
         <div class="form-control">
           <label class="label">
             <span class="label-text">E-mail</span>
+            <span class="label-text text-error"
+              *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">requis</span>
           </label>
-          <input type="email" placeholder="e-mail" class="input input-bordered" />
+          <input type="email" placeholder="e-mail" class="input input-bordered" formControlName="email" />
+          <label class="label">
+            <span class="label-text-alt text-error"
+              *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">E-mail
+              incorrect.
+            </span>
+          </label>
         </div>
         <div class="form-control">
           <label class="label">
+            <span class="label-text text-error"
+              *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">requis</span>
             <span class="label-text">Mot de passe</span>
           </label>
           <input type="text" placeholder="mot de passe" class="input input-bordered" />
+          <label class="label">
+            <span class="label-text-alt text-error"
+              *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched">Doit
+              contenir 3 caractères minimum.
+            </span>
+          </label>
         </div>
         <div class="form-control mt-6">
-          <button class="btn btn-primary">Inscription</button>
+          <button class="btn btn-primary" type="submit">Inscription</button>
+          <a routerLink="/login" class="text-neutral hover:text-primary link link-hover text-sm m-auto">
+            J'ai déjà un compte, je me connecte.
+          </a>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
