@@ -1,9 +1,8 @@
-import { getUserByEmail, createUser } from '../db/request';
+import { getUserByEmail, createUser } from '../db/request/user';
 import { comparePassword, hashPassword } from '../utils';
 import { Request, Response } from 'express';
 import { createToken } from '../middlewares/auth';
 import { User, UserRes } from '../models/user';
-import { get } from 'http';
 
 // Login
 export const login = async (req: Request, res: Response) => {
@@ -18,8 +17,6 @@ export const login = async (req: Request, res: Response) => {
     if (!isPasswordValid)
         return res.status(400).json({ error: 'Invalid password' });
     
-    const token = createToken(user);
-
     //delete user.password
     const userRes: UserRes = {
         id: user.id,
@@ -29,6 +26,9 @@ export const login = async (req: Request, res: Response) => {
         email: user.email,
         admin: user.admin
     };
+
+    const token = createToken(userRes);
+    
 
     return res.status(200).json({ message: 'User logged in successfully !', token, user: userRes });
 }
