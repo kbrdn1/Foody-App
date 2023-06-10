@@ -1,6 +1,7 @@
 export default interface Food {
-    id: number;
+    id?: number;
     name: string;
+    img?: string | null;
     calorie: number;
     lipid: number;
     carbohydrate: number;

@@ -1,6 +1,9 @@
 import Food from '../models/food';
-import { getAllFoods, getOneFood, addFood, editFood, dropFood } from '../db/request/food';
+import { getAllFoods, getOneFood, addFood, editFood, patchOneFood, dropFood } from '../db/request/food';
 import { Request, Response } from 'express';
+interface MulterRequest extends Request {
+  file: any;
+}
 
 // Get all foods
 export const getFoods = async (req: Request, res: Response) => {
@@ -26,7 +29,11 @@ export const getFood = async (req: Request, res: Response) => {
 
 // Create a food
 export const createFood = async (req: Request, res: Response) => {
-    await addFood(req.body)
+    let formData = JSON.parse(req.body.food);
+    if (req.file)
+        formData.img = req.file.filename;
+    
+    await addFood(formData)
         .then((food: Food) => {
             res.status(201).json(food);
         })
@@ -37,7 +44,23 @@ export const createFood = async (req: Request, res: Response) => {
 
 // Update a food
 export const updateFood = async (req: Request, res: Response) => {
-    await editFood(parseInt(req.params.id), req.body)
+    let formData = JSON.parse(req.body.food);
+    if (req.file)
+        formData.img = req.file.filename;
+    
+    await editFood(parseInt(req.params.id), formData)
+        .then((food: Food) => {
+            res.status(200).json(food);
+        })
+        .catch((error: Error) => {
+            res.status(400).json({ error: error.message });
+        })
+}
+
+// Patch a food
+export const patchFood = async (req: Request, res: Response) => {
+    const food: Food = req.body;
+    await patchOneFood(parseInt(req.params.id), food)
         .then((food: Food) => {
             res.status(200).json(food);
         })
