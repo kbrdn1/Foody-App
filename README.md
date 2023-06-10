@@ -1,18 +1,61 @@
-# Foody-App
+# Foody-App 🍔
+
 A simple project to learn how to use Angular and Node w/ TypeScript.
+### Description
+This application allows you to manage your daily food consumption. You can through different features you can manage your diet, weight, physical activity and health.
 
 ## Tech stack
-- Angular 16
-- Node 20.1.0
-- TypeScript
-- MySQL
+### Frontend
+- Angular 🅰️
+- TailwindCSS + DaisyUI 🍃
+- Font Awesome 🎨
 
-## Installation
+### Backend
+- Node + TypeScript 🟩
+- Express 🚂
+- Multer 📁
+- JWT 🍪
+- Bcrypt 🔒
+- MySQL 🐬
 
-## TODO
+### Common
+- TypeScript 🟦
+- pnpm 📦
+
+## Installation 📥
+### Install pnpm (if not already installed)
+```bash
+npm install -g pnpm
+```
+### Frontend
+```bash
+cd frontend
+pnpm install
+```
+
+### Backend
+```bash
+cd backend
+pnpm install
+```
+## Getting started 🏁
+### Frontend
+```bash
+cd frontend
+pnpm start
+```
+and go to http://localhost:4200
+
+### Backend
+```bash
+cd backend
+pnpm dev
+```
+
+## TODO 📇
 - [x] User Authentication
-- [ ] Allow a user to enter a new food with (name, calorie, lipid, carbohydrate, protein)
+- [x] Allow a user to enter a new food with (name, calorie, lipid, carbohydrate, protein)
 - [ ] Allow a user to fill in 4 categories for this day: breakfast, lunch, dinner and snack with a product
-- [ ] The product list is a common list between all users of the application
-- [ ] An administrator can delete a product
+- [x] The product list is a common list between all users of the application
+- [x] An administrator can delete a product
 - [ ] Allow the user to follow his consumption over a given period (free representation: graph, table, summary list, etc.)
