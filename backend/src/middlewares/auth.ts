@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { config } from 'dotenv';
-import { User, UserRes } from '../models/user';
+import { User, UserRes } from '@models/user';
 import { Request, Response, NextFunction } from 'express';
 
 // Extend Express Request interface to add user property
@@ -80,10 +80,22 @@ export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
     next();
 }
 
-export default {
-    createToken,
-    verifyToken,
-    decodeToken,
-    isAdmin,
-    isAuthentificate
-};
+export const isOwnnerOrAdmin = (req: Request, res: Response, next: NextFunction) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token)
+        return res.status(401).json({ error: 'Access denied' });
+    
+    if (!verifyToken(token))
+        return res.status(401).json({ error: 'Access denied' });
+    
+    const decodedToken = decodeToken(token);
+    if (!decodedToken)
+        return res.status(401).json({ error: 'Access denied' });
+    
+    const user = JSON.parse(JSON.stringify(decodedToken)).user;
+    
+    if (req.params.userId != user.id && !user.admin)
+        return res.status(401).json({ error: 'Access denied' });
+    
+    next();
+}
