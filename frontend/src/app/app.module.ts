@@ -13,6 +13,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FoodComponent } from './pages/food/food.component';
+import { MealComponent } from './pages/meal/meal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FoodComponent } from './pages/food/food.component';
     RegisterComponent,
     ProfileComponent,
     FoodComponent,
+    MealComponent,
   ],
   imports: [
     BrowserModule,

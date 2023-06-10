@@ -6,15 +6,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { authGuard } from './services/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { EditFoodComponent } from './pages/edit-food/edit-food.component';
 import { FoodComponent } from './pages/food/food.component';
+import { MealComponent } from './pages/meal/meal.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
-  { path: 'edit-food', component: EditFoodComponent, canActivate: [authGuard] },
+  { path: 'meal', component: MealComponent, canActivate: [authGuard] },
   { path: 'food', component: FoodComponent, canActivate: [authGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
