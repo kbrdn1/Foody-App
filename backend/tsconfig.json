@@ -22,7 +22,10 @@
       "@models/*": ["./src/models/*"],
       "@routes/*": ["./src/routes/*"],
       "@services/*": ["./src/services/*"],
-      "@utils/*": ["./src/utils/*"],
+      "@utils": ["./src/utils"],
+      "@db/*": ["./src/db/*"],
+      "@uploads/*": ["./uploads/*"],
+      "@foods/*": ["./foods/*"],
     }
   },
   "ts-node": {
