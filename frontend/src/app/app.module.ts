@@ -12,7 +12,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { EditFoodComponent } from './pages/edit-food/edit-food.component';
 import { FoodComponent } from './pages/food/food.component';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { FoodComponent } from './pages/food/food.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    EditFoodComponent,
     FoodComponent,
   ],
   imports: [
