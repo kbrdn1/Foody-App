@@ -1,5 +1,5 @@
-import Food from '../models/food';
-import { getAllFoods, getOneFood, addFood, editFood, patchOneFood, dropFood } from '../db/request/food';
+import Food from '@models/food';
+import { getAllFoods, getOneFood, addFood, editFood, patchOneFood, dropFood } from '@db/request/food';
 import { Request, Response } from 'express';
 interface MulterRequest extends Request {
   file: any;

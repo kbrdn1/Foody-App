@@ -1,20 +1,28 @@
-import cors from 'cors'
 import express from 'express'
-import connectDb from './db/connect'
+import cors from 'cors'
 import { config } from 'dotenv'
+import connectDb from '@db/connect'
+import authRoutes from '@routes/auth'
+import foodRoutes from '@routes/food'
+import mealRoutes from '@routes/meal'
 
-// Load environment variables
-config()
+// Initialize express
+const app = express()
 
 // Connect to database
 connectDb
 
+// Load environment variables
+config()
+
 // Get port and app url
 const PORT = process.env.PORT || 3000,
-    APP_URL = process.env.APP_URL;
+APP_URL = process.env.APP_URL;
 
-// Initialize express
-const app = express()
+// CORS
+app.use(cors({
+    origin: APP_URL
+}))
 
 // Body parser
 app.use(express.json())
@@ -23,16 +31,10 @@ app.use(express.json())
 app.use('/uploads', express.static('uploads'))
 app.use('/foods', express.static('foods'))
 
-app.use(cors({
-    origin: APP_URL
-}))
-
 // Routes 
-const authRoutes = require('./routes/auth')
-const foodRoutes = require('./routes/food')
-
-app.use('', authRoutes)
-app.use('', foodRoutes)
+app.use('/', authRoutes)
+app.use('food', foodRoutes)
+app.use('meal', mealRoutes)
 
 // Start server
 app.listen(PORT, () => {

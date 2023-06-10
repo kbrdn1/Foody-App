@@ -1,8 +1,8 @@
-import { getUserByEmail, createUser } from '../db/request/user';
-import { comparePassword, hashPassword } from '../utils';
+import { getUserByEmail, createUser } from '@db/request/user';
+import { comparePassword, hashPassword } from '@utils';
 import { Request, Response } from 'express';
-import { createToken } from '../middlewares/auth';
-import { User, UserRes } from '../models/user';
+import { createToken } from '@middlewares/auth';
+import { User, UserRes } from '@models/user';
 
 // Login
 export const login = async (req: Request, res: Response) => {

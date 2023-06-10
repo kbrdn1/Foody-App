@@ -1,6 +1,5 @@
-import Food from '@app/models/food';
-import { Query } from 'mysql';
-import connectDb from '../connect'
+import Food from '@models/food';
+import connectDb from '@db/connect'
 
 // Get all foods
 export const getAllFoods = async (): Promise<Food[]> => {

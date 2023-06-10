@@ -1,5 +1,5 @@
-import { User } from '../../models/user';
-import connectDb from '../connect'
+import { User } from '@models/user';
+import connectDb from '@db/connect'
 
 // Get user by email
 export const getUserByEmail = async (email: string): Promise<User> => {
