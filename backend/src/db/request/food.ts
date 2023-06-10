@@ -37,7 +37,7 @@ export const addFood = async (food: Food): Promise<Food> => {
             if (err) {
                 reject(new Error('Error while creating food'));
             } else {
-                const food: Food = result[0] as Food;
+                food.id = result.insertId;
                 resolve(food);
             }
         });
@@ -51,7 +51,7 @@ export const editFood = async (id: number, food: Food): Promise<Food> => {
             if (err) {
                 reject(new Error('Error while editing food'));
             } else {
-                const food: Food = result[0] as Food;
+                food.id = id;
                 resolve(food);
             }
         });
@@ -66,7 +66,7 @@ export const patchOneFood = async (id: number, food: Food): Promise<Food> => {
             if (err) {
                 reject(new Error('Error while patching food'));
             } else {
-                const food: Food = result[0] as Food;
+                food.id = id;
                 resolve(food);
             }
         });

@@ -34,5 +34,6 @@ export class NavbarComponent {
 
   signOut() {
     this.auth.logout();
+    window.location.reload();
   }
 }

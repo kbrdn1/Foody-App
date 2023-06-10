@@ -1,0 +1,252 @@
+<div class="rounded-lg bg-neutral-100 px-3 py-6 w-full">
+  <!-- Open the modal using ID.showModal() method -->
+  <dialog id="addFoodModal" class="modal modal-bottom sm:modal-middle">
+    <form (ngSubmit)="addFood()" class="modal-box" [formGroup]="addForm">
+      <h3 class="font-bold text-lg">Ajouter un aliment</h3>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Nom</span>
+          <span class="label-text text-error"
+            *ngIf="addForm.get('name')?.hasError('required') && addForm.get('name')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Nom de l'aliment" class="input input-bordered" formControlName="name" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('name')?.hasError('minlength') && addForm.get('name')?.touched">Doit contenir 3
+            caractères minimum.
+          </span>
+        </label>
+      </div>
+      <div class="form-control w-full max-w-xs">
+        <label class="label">
+          <span class="label-text">Image de l'aliment</span>
+          <span class="label-text text-error"
+            *ngIf="addForm.get('img')?.hasError('required') && addForm.get('img')?.touched">requis</span>
+        </label>
+        <input type="file" class="file-input file-input-bordered w-full max-w-xs" accept=".png, .jpg, .jpeg"
+          formControlName="img" (change)="onFileChange($event)" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('img')?.hasError('parten') && addForm.get('img')?.touched">Doit être une image au format
+            .png, .jpg ou .jpeg.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Calories</span>
+          <span class="label-text text-error"
+            *ngIf="addForm.get('calorie')?.hasError('required') && addForm.get('calorie')?.touched">requis</span>
+        </label>
+        <input type="number" placeholder="Calories" class="input input-bordered" formControlName="calorie" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('calorie')?.hasError('min') && addForm.get('calorie')?.touched">Ne doit pas être
+            inférieur à 0.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Lipides</span>
+          <span class="label-text text-error"
+            *ngIf="addForm.get('lipid')?.hasError('required') && addForm.get('lipid')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Lipides" class="input input-bordered" formControlName="lipid" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('lipid')?.hasError('min') && addForm.get('lipid')?.touched">Ne doit pas être inférieur à
+            0.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Glucides</span>
+          <span class="label-text text-error" *ngIf="addForm.get('carbohydrate')?.hasError('required') &&
+            addForm.get('carbohydrate')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Glucides" class="input input-bordered" formControlName="carbohydrate" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('carbohydrate')?.hasError('min') && addForm.get('carbohydrate')?.touched">Ne doit pas
+            être inférieur à
+            0.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Protéines</span>
+          <span class="label-text text-error" *ngIf="addForm.get('protein')?.hasError('required') &&
+            addForm.get('protein')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Protéines" class="input input-bordered" formControlName="protein" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('protein')?.hasError('min') && addForm.get('protein')?.touched">Ne doit pas
+            être inférieur à
+            0.
+          </span>
+        </label>
+      </div>
+      <div class="flex flex-col md:flex-row items-center justify-end gap-3">
+        <button class="btn btn-primary w-full md:w-fit" type="submit">Valider</button>
+        <form method="dialog" class="w-full md:w-fit">
+          <button class="btn w-full md:w-fit" (click)="cancel()">Annuler</button>
+        </form>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="editFoodModal" class="modal modal-bottom sm:modal-middle">
+    <form (ngSubmit)="editFood()" class="modal-box" [formGroup]="updateForm">
+      <h3 class="font-bold text-lg">Editer un aliment</h3>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Nom</span>
+          <span class="label-text text-error"
+            *ngIf="addForm.get('name')?.hasError('required') && addForm.get('name')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Nom de l'aliment" class="input input-bordered" formControlName="name" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('name')?.hasError('minlength') && addForm.get('name')?.touched">Doit contenir 3
+            caractères minimum.
+          </span>
+        </label>
+      </div>
+      <div class="form-control w-full max-w-xs">
+        <label class="label">
+          <span class="label-text">Image de l'aliment</span>
+        </label>
+        <input type="file" class="file-input file-input-bordered w-full max-w-xs" accept=".png, .jpg, .jpeg"
+          formControlName="img" (change)="onFileChange($event)" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('img')?.hasError('parten') && addForm.get('img')?.touched">Doit être une image au format
+            .png, .jpg ou .jpeg.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Calories</span>
+          <span class="label-text text-error"
+            *ngIf="addForm.get('calorie')?.hasError('required') && addForm.get('calorie')?.touched">requis</span>
+        </label>
+        <input type="number" placeholder="Calories" class="input input-bordered" formControlName="calorie" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('calorie')?.hasError('min') && addForm.get('calorie')?.touched">Ne doit pas être
+            inférieur à 0.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Lipides</span>
+          <span class="label-text text-error"
+            *ngIf="addForm.get('lipid')?.hasError('required') && addForm.get('lipid')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Lipides" class="input input-bordered" formControlName="lipid" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('lipid')?.hasError('min') && addForm.get('lipid')?.touched">Ne doit pas être inférieur à
+            0.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Glucides</span>
+          <span class="label-text text-error" *ngIf="addForm.get('carbohydrate')?.hasError('required') &&
+            addForm.get('carbohydrate')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Glucides" class="input input-bordered" formControlName="carbohydrate" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('carbohydrate')?.hasError('min') && addForm.get('carbohydrate')?.touched">Ne doit pas
+            être inférieur à
+            0.
+          </span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Protéines</span>
+          <span class="label-text text-error" *ngIf="addForm.get('protein')?.hasError('required') &&
+            addForm.get('protein')?.touched">requis</span>
+        </label>
+        <input type="text" placeholder="Protéines" class="input input-bordered" formControlName="protein" />
+        <label class="label">
+          <span class="label-text-alt text-error"
+            *ngIf="addForm.get('protein')?.hasError('min') && addForm.get('protein')?.touched">Ne doit pas
+            être inférieur à
+            0.
+          </span>
+        </label>
+      </div>
+      <div class="flex flex-col md:flex-row items-center justify-end gap-3">
+        <button class="btn btn-primary w-full md:w-fit" type="submit">Valider</button>
+        <form method="dialog" class="w-full md:w-fit">
+          <button class="btn w-full md:w-fit" (click)="cancel()">Annuler</button>
+        </form>
+      </div>
+    </form>
+  </dialog>
+  <div class="flex items-center justify-between">
+    <h1 class="text-3xl font-bold">Listes des aliments</h1>
+    <button class="btn btn-primary" onclick="addFoodModal.showModal()">
+      <i class="fas fa-plus"></i>
+      Ajouter un aliment
+    </button>
+  </div>
+  <div class="flex flex-col md:flex-row w-full my-3 overflow-x-auto">
+    <div class="overflow-auto mx-auto border rounded-md">
+      <table class="table table-zebra w-full md:w-1/2">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nom</th>
+            <th>Calories (kcal)</th>
+            <th>Lipides (g)</th>
+            <th>Glucides (g)</th>
+            <th>Protéines (g)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          <tr *ngFor="let food of Foods" class="hover:outline outline-secondary transition-all cursor-pointer"
+            (click)="selectFood(food)">
+            <th>{{food.id}}</th>
+            <td>{{food.name}}</td>
+            <td>{{food.calorie}}</td>
+            <td>{{food.lipid}}</td>
+            <td>{{food.carbohydrate}}</td>
+            <td>{{food.protein}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="selectedFood" class="card w-full md:w-1/2 bg-base-100 shadow-xl">
+      <figure class="px-10 pt-10">
+        <img src="http://localhost:3000/foods/{{selectedFood.img}}" alt="{{selectedFood.name}}"
+          class="rounded-xl h-28" />
+      </figure>
+      <div class="card-body items-center text-center gap-5 border-t">
+        <h2 class="card-title">{{selectedFood.name}}</h2>
+        <div class="flex items-center gap-3 flex-wrap justify-center">
+          <div class="badge badge-lg badge-primary">Calories: {{selectedFood.calorie}} kcal</div>
+          <div class="badge badge-lg">Lipides: {{selectedFood.lipid}} g</div>
+          <div class="badge badge-lg">Glucides: {{selectedFood.carbohydrate}} g</div>
+          <div class="badge badge-lg badge-secondary">Protéines: {{selectedFood.protein}} g</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline btn-primary" onclick="editFoodModal.showModal()" (click)="openEditModal()">Editer</button>
+          <button *ngIf="user?.admin" class="btn btn-outline btn-error" (click)="deleteFood()">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

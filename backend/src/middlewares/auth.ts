@@ -41,8 +41,6 @@ export const decodeToken = (token: string) => {
     if (!secret)
         throw new Error('JWT secret is not defined');
     
-    console.log(jwt.decode(token));
-    
     return jwt.decode(token);
 }
 
