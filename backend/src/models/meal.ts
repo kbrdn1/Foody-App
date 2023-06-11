@@ -6,4 +6,5 @@ export default interface Meal {
     name: string;
     foods: Food[];
     date: Date;
+    categoryId: 1 | 2 | 3 | 4;
 }
