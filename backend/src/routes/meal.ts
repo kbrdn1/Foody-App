@@ -4,14 +4,14 @@ import { getMeal, getMealById, createMeal, updateMeal, deleteMeal, getMealByUser
 
 const router = Express.Router();
 
-router.get("/", isAdmin, getMeal);
-router.get("/:id", isAdmin, getMealById);
-router.post("/", createMeal);
-router.put("/:id", isOwnnerOrAdmin, updateMeal);
-router.delete("/:id", isOwnnerOrAdmin, deleteMeal);
-router.get("/user/:userId", isOwnnerOrAdmin, getMealByUserId);
-router.get("/date/:date/user/:userId", isOwnnerOrAdmin, getMealByDateAndUserId);
-router.get("/date/:date/user/:userId/category/:categoryId", isOwnnerOrAdmin, getMealByDateAndUserIdAndCategoryId);
-router.get("/user/:userId/category/:categoryId", isOwnnerOrAdmin, getMealByUserIdAndCategoryId);
+router.get("/meal", isAdmin, getMeal);
+router.get("/meal/:id", isAdmin, getMealById);
+router.post("/meal", createMeal);
+router.put("/meal/:id", isOwnnerOrAdmin, updateMeal);
+router.delete("/meal/:id", isOwnnerOrAdmin, deleteMeal);
+router.get("/meal/user/:userId", isOwnnerOrAdmin, getMealByUserId);
+router.get("/meal/date/:date/user/:userId", isOwnnerOrAdmin, getMealByDateAndUserId);
+router.get("/meal/date/:date/user/:userId/category/:categoryId", isOwnnerOrAdmin, getMealByDateAndUserIdAndCategoryId);
+router.get("/meal/user/:userId/category/:categoryId", isOwnnerOrAdmin, getMealByUserIdAndCategoryId);
 
 export default router;

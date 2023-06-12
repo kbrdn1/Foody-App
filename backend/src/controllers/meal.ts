@@ -69,9 +69,10 @@ export const getMealByUserId = async (req: Request, res: Response) => {
 
 export const getMealByDateAndUserId = async (req: Request, res: Response) => {
     const userId = parseInt(req.params.userId)
-    await getAllMealByDateAndUserId(new Date(req.params.date), userId)
+    const date = req.params.date
+    await getAllMealByDateAndUserId(date, userId)
         .then((meals: Meal[]) => {
-        res.status(200).json(meals)
+            res.status(200).json(meals)
         })
         .catch((error: Error) => {
             res.status(500).json({error: error.message})
@@ -81,7 +82,8 @@ export const getMealByDateAndUserId = async (req: Request, res: Response) => {
 export const getMealByDateAndUserIdAndCategoryId = async (req: Request, res: Response) => {
     const userId = parseInt(req.params.userId)
     const categoryId = parseInt(req.params.categoryId)
-    await getAllMealByDateAndUserIdAndCategoryId(new Date(req.params.date), userId, categoryId)
+    const date = req.params.date
+    await getAllMealByDateAndUserIdAndCategoryId(date, userId, categoryId)
         .then((meals: Meal[]) => {
         res.status(200).json(meals)
         })

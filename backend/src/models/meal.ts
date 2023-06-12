@@ -4,7 +4,7 @@ export default interface Meal {
     id?: number;
     userId: number;
     name: string;
-    foods: Food[];
+    foods: number[];
     date: Date;
     categoryId: 1 | 2 | 3 | 4;
 }
