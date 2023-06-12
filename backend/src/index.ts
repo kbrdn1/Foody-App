@@ -32,9 +32,9 @@ app.use('/uploads', express.static('uploads'))
 app.use('/foods', express.static('foods'))
 
 // Routes 
-app.use('/', authRoutes)
-app.use('food', foodRoutes)
-app.use('meal', mealRoutes)
+app.use('', authRoutes)
+app.use('', foodRoutes)
+app.use('', mealRoutes)
 
 // Start server
 app.listen(PORT, () => {

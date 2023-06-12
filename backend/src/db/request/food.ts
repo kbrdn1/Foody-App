@@ -85,3 +85,17 @@ export const dropFood = async (id: number): Promise<Food> => {
         });
     });
 }
+
+// Search foods
+export const searchFoods = async (search: string): Promise<Food[]> => {
+    return await new Promise((resolve, reject) => {
+        connectDb.query(`SELECT * FROM food WHERE name LIKE '%${search}%'`, (err, result) => {
+            if (err) {
+                reject(new Error('Error while searching foods'));
+            } else {
+                const foods: Food[] = result as Food[];
+                resolve(foods);
+            }
+        });
+    });
+}
