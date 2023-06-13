@@ -5,6 +5,7 @@ import Meal from 'src/app/models/meal';
 import Chart from 'chart.js/auto';
 import { ChartOptions, ChartTypeRegistry, ChartData } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +29,14 @@ export class ProfileComponent {
   snackFoods: Food[] = [];
   totalSnackCalories: number = 0;
 
-  constructor(private http: HttpClient) {
+  editUserForm: FormGroup = this.formBuilder.group({
+    firstname: [this.user.firstname, [Validators.required, Validators.minLength(3)]],
+    lastname: [this.user.lastname, [Validators.required, Validators.minLength(3)]],
+    email: [this.user.email, [Validators.required, Validators.email]],
+    password: [this.user.password, [Validators.required, Validators.minLength(3)]],
+  });
+
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) {
     const currentDate = new Date().toISOString().slice(0, 10);
     this.http
       .get<Meal[]>(
@@ -57,7 +65,26 @@ export class ProfileComponent {
   }
 
   editUser() {
-    console.log('edit user');
+    if (this.editUserForm.valid) {
+      this.http
+        .put<User>(
+          `http://localhost:3000/user/${this.user.id}`,
+          this.editUserForm.value
+        )
+        .subscribe({
+          next: (res) => {
+            localStorage.setItem('user', JSON.stringify(res));
+            this.user = res;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+    }
+  }
+
+  cancel() {
+    this.editUserForm.reset();
   }
 
   // dd/mm/yyyy
