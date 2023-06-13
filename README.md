@@ -58,4 +58,4 @@ pnpm dev
 - [x] Allow a user to fill in 4 categories for this day: breakfast, lunch, dinner and snack with a product
 - [x] The product list is a common list between all users of the application
 - [x] An administrator can delete a product
-- [ ] Allow the user to follow his consumption over a given period (free representation: graph, table, summary list, etc.)
+- [x] Allow the user to follow his consumption over a given period (free representation: graph, table, summary list, etc.)
