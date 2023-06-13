@@ -9,6 +9,7 @@ This application allows you to manage your daily food consumption. You can throu
 - Angular 🅰️
 - TailwindCSS + DaisyUI 🍃
 - Font Awesome 🎨
+- Chart.js 📊
 
 ### Backend
 - Node + TypeScript 🟩
