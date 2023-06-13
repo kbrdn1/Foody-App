@@ -38,6 +38,9 @@ pnpm install
 cd backend
 pnpm install
 ```
+
+### Database
+Import the database from the `foody-app.sql.zip` file into your MySQL server.
 ## Getting started 🏁
 ### Frontend
 ```bash
