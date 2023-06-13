@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import Meal from '@models/meal';
-import { getAllMeals, getOneMealById, addMeal, editMeal, dropMeal, getAllMealByUserId, getAllMealByDateAndUserId } from '@db/request/meal';
+import { getAllMeals, getOneMealById, addMeal, editMeal, dropMeal, getAllMealByUserId, getAllMealByDateAndUserId, getAllMealByDateAndUserIdAndCategoryId, getAllMealUserIdAndCategoryId } from '@db/request/meal';
 
 export const getMeal = async (req: Request, res: Response) => {
     const userId = parseInt(req.params.userId)
@@ -69,11 +69,37 @@ export const getMealByUserId = async (req: Request, res: Response) => {
 
 export const getMealByDateAndUserId = async (req: Request, res: Response) => {
     const userId = parseInt(req.params.userId)
-    await getAllMealByDateAndUserId(new Date(req.params.date), userId)
+    const date = req.params.date
+    await getAllMealByDateAndUserId(date, userId)
+        .then((meals: Meal[]) => {
+            res.status(200).json(meals)
+        })
+        .catch((error: Error) => {
+            res.status(500).json({error: error.message})
+        })
+}   
+
+export const getMealByDateAndUserIdAndCategoryId = async (req: Request, res: Response) => {
+    const userId = parseInt(req.params.userId)
+    const categoryId = parseInt(req.params.categoryId)
+    const date = req.params.date
+    await getAllMealByDateAndUserIdAndCategoryId(date, userId, categoryId)
         .then((meals: Meal[]) => {
         res.status(200).json(meals)
         })
         .catch((error: Error) => {
             res.status(500).json({error: error.message})
         })
-}   
+}
+
+export const getMealByUserIdAndCategoryId = async (req: Request, res: Response) => {
+    const userId = parseInt(req.params.userId)
+    const categoryId = parseInt(req.params.categoryId)
+    await getAllMealUserIdAndCategoryId(userId, categoryId)
+        .then((meals: Meal[]) => {
+        res.status(200).json(meals)
+        })
+        .catch((error: Error) => {
+            res.status(500).json({error: error.message})
+        })
+}

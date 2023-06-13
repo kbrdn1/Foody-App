@@ -4,5 +4,6 @@ export default interface User {
   lastname: string;
   avatar: string | null;
   email: string;
+  password?: string;
   admin: boolean;
 }
