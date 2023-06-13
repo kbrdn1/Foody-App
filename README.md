@@ -39,6 +39,15 @@ pnpm install
 cd backend
 pnpm install
 ```
+In the `backend` folder, rename the `.env.example` file to `.env` and fill it with your own values.
+```env
+APP_URL=http://localhost:<frontend-port>
+PORT=<port>
+JWT=<jwt-secret>
+DB_HOST=<db-host>
+DB_USER=<db-user>
+DB_PASS=<db-password>
+```
 
 ### Database
 Import the database from the `foody-app.sql.zip` file into your MySQL server.
