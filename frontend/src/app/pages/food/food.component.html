@@ -52,7 +52,7 @@
           <span class="label-text text-error"
             *ngIf="addForm.get('lipid')?.hasError('required') && addForm.get('lipid')?.touched">requis</span>
         </label>
-        <input type="text" placeholder="Lipides" class="input input-bordered" formControlName="lipid" />
+        <input type="number" placeholder="Lipides" class="input input-bordered" formControlName="lipid" />
         <label class="label">
           <span class="label-text-alt text-error"
             *ngIf="addForm.get('lipid')?.hasError('min') && addForm.get('lipid')?.touched">Ne doit pas être inférieur à
@@ -66,7 +66,7 @@
           <span class="label-text text-error" *ngIf="addForm.get('carbohydrate')?.hasError('required') &&
             addForm.get('carbohydrate')?.touched">requis</span>
         </label>
-        <input type="text" placeholder="Glucides" class="input input-bordered" formControlName="carbohydrate" />
+        <input type="number" placeholder="Glucides" class="input input-bordered" formControlName="carbohydrate" />
         <label class="label">
           <span class="label-text-alt text-error"
             *ngIf="addForm.get('carbohydrate')?.hasError('min') && addForm.get('carbohydrate')?.touched">Ne doit pas
@@ -81,7 +81,7 @@
           <span class="label-text text-error" *ngIf="addForm.get('protein')?.hasError('required') &&
             addForm.get('protein')?.touched">requis</span>
         </label>
-        <input type="text" placeholder="Protéines" class="input input-bordered" formControlName="protein" />
+        <input type="number" placeholder="Protéines" class="input input-bordered" formControlName="protein" />
         <label class="label">
           <span class="label-text-alt text-error"
             *ngIf="addForm.get('protein')?.hasError('min') && addForm.get('protein')?.touched">Ne doit pas
@@ -148,7 +148,7 @@
           <span class="label-text text-error"
             *ngIf="addForm.get('lipid')?.hasError('required') && addForm.get('lipid')?.touched">requis</span>
         </label>
-        <input type="text" placeholder="Lipides" class="input input-bordered" formControlName="lipid" />
+        <input type="number" placeholder="Lipides" class="input input-bordered" formControlName="lipid" />
         <label class="label">
           <span class="label-text-alt text-error"
             *ngIf="addForm.get('lipid')?.hasError('min') && addForm.get('lipid')?.touched">Ne doit pas être inférieur à
@@ -162,7 +162,7 @@
           <span class="label-text text-error" *ngIf="addForm.get('carbohydrate')?.hasError('required') &&
             addForm.get('carbohydrate')?.touched">requis</span>
         </label>
-        <input type="text" placeholder="Glucides" class="input input-bordered" formControlName="carbohydrate" />
+        <input type="number" placeholder="Glucides" class="input input-bordered" formControlName="carbohydrate" />
         <label class="label">
           <span class="label-text-alt text-error"
             *ngIf="addForm.get('carbohydrate')?.hasError('min') && addForm.get('carbohydrate')?.touched">Ne doit pas
@@ -177,7 +177,7 @@
           <span class="label-text text-error" *ngIf="addForm.get('protein')?.hasError('required') &&
             addForm.get('protein')?.touched">requis</span>
         </label>
-        <input type="text" placeholder="Protéines" class="input input-bordered" formControlName="protein" />
+        <input type="number" placeholder="Protéines" class="input input-bordered" formControlName="protein" />
         <label class="label">
           <span class="label-text-alt text-error"
             *ngIf="addForm.get('protein')?.hasError('min') && addForm.get('protein')?.touched">Ne doit pas
