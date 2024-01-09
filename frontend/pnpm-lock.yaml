@@ -16,7 +16,7 @@ dependencies:
     version: 16.0.0(@angular/core@16.0.0)
   '@angular/core':
     specifier: ^16.0.0
-    version: 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+    version: 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
   '@angular/forms':
     specifier: ^16.0.0
     version: 16.0.0(@angular/common@16.0.0)(@angular/core@16.0.0)(@angular/platform-browser@16.0.0)(rxjs@7.8.0)
@@ -39,8 +39,8 @@ dependencies:
     specifier: ^2.3.0
     version: 2.3.0
   zone.js:
-    specifier: ~0.13.0
-    version: 0.13.0
+    specifier: ~0.14.0
+    version: 0.14.3
 
 devDependencies:
   '@angular-devkit/build-angular':
@@ -289,7 +289,7 @@ packages:
     peerDependencies:
       '@angular/core': 16.0.0
     dependencies:
-      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
       tslib: 2.3.0
     dev: false
 
@@ -329,7 +329,7 @@ packages:
       '@angular/core': 16.0.0
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
-      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
       rxjs: 7.8.0
       tslib: 2.3.0
     dev: false
@@ -365,10 +365,10 @@ packages:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
       tslib: 2.3.0
 
-  /@angular/core@16.0.0(rxjs@7.8.0)(zone.js@0.13.0):
+  /@angular/core@16.0.0(rxjs@7.8.0)(zone.js@0.14.3):
     resolution: {integrity: sha512-scppDxtXubum6ZiGu3ogmReBtMuA5XXk5FL3YKLb3c9O7q9Z5PC8KNQ6SsaOwEb6oW+0BWXMV698p/zmd0J4tA==}
     engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
@@ -377,7 +377,7 @@ packages:
     dependencies:
       rxjs: 7.8.0
       tslib: 2.3.0
-      zone.js: 0.13.0
+      zone.js: 0.14.3
 
   /@angular/forms@16.0.0(@angular/common@16.0.0)(@angular/core@16.0.0)(@angular/platform-browser@16.0.0)(rxjs@7.8.0):
     resolution: {integrity: sha512-avpreXyDYWf44RNM5hfi5cTXXiNwcajBURP5rLap8RPMSUi2ePlJsmi0O+3+GduNZFbtnRXIpKTj3W+GeNa0PA==}
@@ -389,7 +389,7 @@ packages:
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
       '@angular/common': 16.0.0(@angular/core@16.0.0)(rxjs@7.8.0)
-      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
       '@angular/platform-browser': 16.0.0(@angular/animations@16.0.0)(@angular/common@16.0.0)(@angular/core@16.0.0)
       rxjs: 7.8.0
       tslib: 2.3.0
@@ -406,7 +406,7 @@ packages:
     dependencies:
       '@angular/common': 16.0.0(@angular/core@16.0.0)(rxjs@7.8.0)
       '@angular/compiler': 16.0.0(@angular/core@16.0.0)
-      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
       '@angular/platform-browser': 16.0.0(@angular/animations@16.0.0)(@angular/common@16.0.0)(@angular/core@16.0.0)
       tslib: 2.3.0
     dev: false
@@ -424,7 +424,7 @@ packages:
     dependencies:
       '@angular/animations': 16.0.0(@angular/core@16.0.0)
       '@angular/common': 16.0.0(@angular/core@16.0.0)(rxjs@7.8.0)
-      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
       tslib: 2.3.0
     dev: false
 
@@ -438,7 +438,7 @@ packages:
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
       '@angular/common': 16.0.0(@angular/core@16.0.0)(rxjs@7.8.0)
-      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.14.3)
       '@angular/platform-browser': 16.0.0(@angular/animations@16.0.0)(@angular/common@16.0.0)(@angular/core@16.0.0)
       rxjs: 7.8.0
       tslib: 2.3.0
@@ -3411,6 +3411,7 @@ packages:
 
   /debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
+    requiresBuild: true
     peerDependencies:
       supports-color: '*'
     peerDependenciesMeta:
@@ -4790,7 +4791,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.5.0
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11
@@ -5660,6 +5661,7 @@ packages:
   /pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -5873,6 +5875,7 @@ packages:
 
   /prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -6133,7 +6136,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.5.0
     dev: true
 
   /safe-buffer@5.1.2:
@@ -6185,6 +6188,7 @@ packages:
 
   /sax@1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -6221,6 +6225,7 @@ packages:
   /semver@5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
     hasBin: true
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -6846,7 +6851,6 @@ packages:
 
   /tslib@2.5.0:
     resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
-    dev: true
 
   /tuf-js@1.1.6:
     resolution: {integrity: sha512-CXwFVIsXGbVY4vFiWF7TJKWmlKJAT8TWkH4RmiohJRcDJInix++F0dznDmoVbtJNzZ8yLprKUG4YrDIhv3nBMg==}
@@ -7365,7 +7369,7 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /zone.js@0.13.0:
-    resolution: {integrity: sha512-7m3hNNyswsdoDobCkYNAy5WiUulkMd3+fWaGT9ij6iq3Zr/IwJo4RMCYPSDjT+r7tnPErmY9sZpKhWQ8S5k6XQ==}
+  /zone.js@0.14.3:
+    resolution: {integrity: sha512-jYoNqF046Q+JfcZSItRSt+oXFcpXL88yq7XAZjb/NKTS7w2hHpKjRJ3VlFD1k75wMaRRXNUt5vrZVlygiMyHbA==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.5.0
